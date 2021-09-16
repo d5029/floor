@@ -108,4 +108,29 @@ $(function(){
         $(this).attr("fill-opacity", "0.2");
         $(".canvas .tooltip").remove()
     });
+    $(".canvas polygon").on("touchstart", function(e){
+        $(".left").text($(e.target).position().left);
+        $(".top").text($(e.target).position().top);
+        let pos = $("#zoom").css("transform").toString().slice(7, -1).split(", ");
+        console.log(pos);
+        let leftp = pos[4];
+        let topp = pos[5];
+        let index = $(".canvas polygon").index($(this));
+        $(this).attr("fill-opacity", "0.4");
+        $(".canvas").append("<div class='tooltip'><h5></h5><p></p></div>");
+        $(".tooltip").css({
+            // "left":  function(){return $(e.tartget).position().left - leftp},
+            "left":  function(){
+                $(".left").text(($(e.target).position().left - leftp)/pos[0]);
+                return ($(e.target).position().left - leftp)/pos[0]
+                
+            },
+            "top": function(){
+                $(".top").text(($(e.target).position().top - topp)/pos[0]);
+                return ($(e.target).position().top - topp)/pos[0]
+            },
+        });
+        $(".tooltip h5").text(data[index].title);
+        $(".tooltip p").text(data[index].content);
+    })
 })
