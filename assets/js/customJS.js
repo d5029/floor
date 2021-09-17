@@ -109,8 +109,8 @@ $(function(){
         $(".canvas .tooltip").remove()
     });
     $(".canvas polygon").on("touchstart", function(e){
-        $(".left-2").text($(e.target).position().left);
-        $(".top-2").text($(e.target).position().top);
+        $(".left").text($(e.target).position().left);
+        $(".top").text($(e.target).position().top);
         let pos = $("#zoom").css("transform").toString().slice(7, -1).split(", ");
         console.log(pos);
         let leftp = pos[4];
