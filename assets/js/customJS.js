@@ -109,8 +109,8 @@ $(function(){
     //     $(".canvas .tooltip").remove()
     // });
     $(document).on("touchstart", ".canvas polygon", function(e){
-        $(".left").text(e.originalEvent.touches[0].pageX);
-        $(".top").text(e.originalEvent.touches[0].pageY);
+        $(".left").text(e.clientX);
+        $(".top").text(e.clientY);
         let pos = $("#zoom").css("transform").toString().slice(7, -1).split(", ");
         console.log(pos);
         let leftp = pos[4];
@@ -121,13 +121,14 @@ $(function(){
         $(".tooltip").css({
             // "left":  function(){return $(e.tartget).position().left - leftp},
             "left":  function(){
-                $(".left").text(($(e.target).offset().left - leftp)/pos[0]);
+                // $(".left").text(($(e.target).offset().left - leftp)/pos[0]);
                 return ($(e.target).offset().left - leftp)/pos[0]
                 
             },
             "top": function(){
-                $(".top").text(($(e.target).offset().top - topp)/pos[0]);
-                return ($(e.target).offset().top - topp)/pos[0]
+                // $(".top").text(($(e.target).offset().top - topp)/pos[0]);
+                // return ($(e.target).offset().top - topp)/pos[0]
+                return e.clientX
             },
         });
         $(".tooltip h5").text(data[index].title);
