@@ -112,8 +112,8 @@ $(function(){
         console.dir(e.target);
         console.log(e.target.animatedPoints[0]);
         console.log(e.target.ownerDocument.defaultView.pointY);
-        $(".left").text(e.clientX);
-        $(".top").text(e.clientY);
+        $(".left").text(e.target.animatedPoints[0].x);
+        $(".top").text(e.target.animatedPoints[0].y);
         let pos = $("#zoom").css("transform").toString().slice(7, -1).split(", ");
         console.log(pos);
         let leftp = pos[4];
