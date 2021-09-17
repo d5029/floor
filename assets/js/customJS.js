@@ -121,13 +121,13 @@ $(function(){
         $(".tooltip").css({
             // "left":  function(){return $(e.tartget).position().left - leftp},
             "left":  function(){
-                $(".left").text(($(e.target).position().left - leftp)/pos[0]);
-                return ($(e.target).position().left - leftp)/pos[0]
+                $(".left").text(($(e.target).offset().left - leftp)/pos[0]);
+                return ($(e.target).offset().left - leftp)/pos[0]
                 
             },
             "top": function(){
-                $(".top").text(($(e.target).position().top - topp)/pos[0]);
-                return ($(e.target).position().top - topp)/pos[0]
+                $(".top").text(($(e.target).offset().top - topp)/pos[0]);
+                return ($(e.target).offset().top - topp)/pos[0]
             },
         });
         $(".tooltip h5").text(data[index].title);
