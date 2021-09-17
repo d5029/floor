@@ -108,9 +108,9 @@ $(function(){
     //     $(this).attr("fill-opacity", "0.2");
     //     $(".canvas .tooltip").remove()
     // });
-    $(".canvas polygon").on("touchstart", function(e){
-        $(".left").text($(e.target).offset().left);
-        $(".top").text($(e.target).offset().top);
+    $(document).on("touchstart", ".canvas polygon", function(e){
+        $(".left").text(e.originalEvent.touches[0].pageX);
+        $(".top").text(e.originalEvent.touches[0].pageY);
         let pos = $("#zoom").css("transform").toString().slice(7, -1).split(", ");
         console.log(pos);
         let leftp = pos[4];
